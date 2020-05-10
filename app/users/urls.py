@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import index
+from .views import ListUserView
 
 app_name = 'users'
 
 urlpatterns = [
-    path('',index,name='users.index'),
+    path('',ListUserView.as_view(),name='users.index'),
 ]
