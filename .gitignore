@@ -139,3 +139,4 @@ sketch
 
 # End of https://www.gitignore.io/api/react,django
 docker-compose.override.yml
+.vscode/settings.json
