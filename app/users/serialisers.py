@@ -7,7 +7,7 @@ class ListUserSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     email = serializers.CharField()
 
-class RegisterUserSerializer(serializers.ModelSerializer):
+class RegisterUserSerializer(serializers.Serializer):
     username = serializers.CharField(required=True,validators=[
         UniqueValidator(UserModel.objects.all()),
     ])
