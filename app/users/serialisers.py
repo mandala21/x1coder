@@ -14,8 +14,8 @@ class RegisterUserSerializer(serializers.Serializer):
     password = serializers.CharField(required=True)
     email = serializers.EmailField(required=True,validators=[
         UniqueValidator(UserModel.objects.all()),
-    ])        
-    
-    class Meta:
-        model = UserModel
-        fields = ('username','password','email')
+    ])
+
+class LoginUserSerializer(serializers.Serializer):
+    username = serializers.CharField(required=True)
+    password = serializers.CharField(required=True)
