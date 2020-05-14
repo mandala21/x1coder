@@ -1,4 +1,5 @@
 import unittest
+from users.models import UserModel
 
 class TestJsonStruct(unittest.TestCase):
     def assertJsonStruct(self, data, struct):
@@ -31,6 +32,15 @@ class TestJsonStruct(unittest.TestCase):
         #interation in all keys of input and check if in struct
         for key in data.keys():
             if key in struct:
+                #for a dict struct
+                if isinstance(struct[key],dict):
+                    sub_struct = struct[key].get('*')
+                    if sub_struct:
+                        for sub_data in data[key]:
+                            return self.assertJsonStruct(sub_data,sub_struct)
+                    else:
+                        raise NotImplemented
+                #handle with primary data struct
                 if isinstance(data[key],struct[key]):
                     struct.pop(key)
         #if len of struct is zero then all in struct in input
