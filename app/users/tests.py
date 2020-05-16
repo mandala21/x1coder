@@ -1,6 +1,6 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
-from users.models import UserModel
+from users.models import User
 from rest_framework import status
 from utils.test import TestJsonStruct
 from rest_framework_jwt.settings import api_settings
@@ -13,7 +13,7 @@ class UserTest(TestCase, TestJsonStruct):
     token = ''
 
     def setUp(self):
-        user = UserModel.objects.create_user('Teste','teste@new.com','12345678')
+        user = User.objects.create_user('Teste','teste@new.com','12345678')
         self.token = jwt_encode_handler(jwt_payload_handler(user))
 
     def test_can_login(self):

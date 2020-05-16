@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from .models import UserModel
+from .models import User
 
 class ListUserSerializer(serializers.Serializer):
     username = serializers.CharField()
@@ -9,11 +9,11 @@ class ListUserSerializer(serializers.Serializer):
 
 class RegisterUserSerializer(serializers.Serializer):
     username = serializers.CharField(required=True,validators=[
-        UniqueValidator(UserModel.objects.all()),
+        UniqueValidator(User.objects.all()),
     ])
     password = serializers.CharField(required=True)
     email = serializers.EmailField(required=True,validators=[
-        UniqueValidator(UserModel.objects.all()),
+        UniqueValidator(User.objects.all()),
     ])
 
 class LoginUserSerializer(serializers.Serializer):

@@ -1,4 +1,4 @@
-from .models import UserModel
+from .models import User
 from rest_framework_jwt.settings import api_settings
 from django.db import transaction
 from django.db.models import Q
@@ -16,7 +16,7 @@ class UserService():
         Register a new user in database
         """
         with transaction.atomic():
-            user = UserModel.objects.create_user(data['username'],data['email'],data['password'])
+            user = User.objects.create_user(data['username'],data['email'],data['password'])
             payload = self.build_payload(user)
             token = jwt_encode_handler(payload)
             return self.respond_with_token(token) 
@@ -31,7 +31,7 @@ class UserService():
         """
         Get user from credentials informed
         """
-        return UserModel.objects.filter(Q(username=data['username'])|Q(email=data['username'])).first()
+        return User.objects.filter(Q(username=data['username'])|Q(email=data['username'])).first()
     
     def login(self,data):
         """

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView
-from .models import UserModel
+from .models import User
 from .serialisers import ListUserSerializer, RegisterUserSerializer, LoginUserSerializer
 from utils.pagination  import StandardResultsSetPagination
 from .service import UserService
@@ -9,12 +9,12 @@ from rest_framework import status
 
 # Create your views here.
 class ListUserView(ListAPIView):
-    queryset = UserModel.objects.all()
+    queryset = User.objects.all()
     serializer_class = ListUserSerializer
     pagination_class = StandardResultsSetPagination
 
 class RegisterUserView(CreateAPIView):
-    queryset = UserModel.objects.all()
+    queryset = User.objects.all()
     serializer_class = RegisterUserSerializer
     authentication_classes = ()
     permission_classes = ()
@@ -27,7 +27,7 @@ class RegisterUserView(CreateAPIView):
         return Response(response,status=status.HTTP_201_CREATED)
 
 class LoginUserView(CreateAPIView):
-    queryset = UserModel.objects.all()
+    queryset = User.objects.all()
     serializer_class = LoginUserSerializer
     authentication_classes = ()
     permission_classes = ()

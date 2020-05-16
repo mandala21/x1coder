@@ -1,5 +1,5 @@
 import unittest
-from users.models import UserModel
+from users.models import User
 
 class TestJsonStruct(unittest.TestCase):
     def assertJsonStruct(self, data, struct):
