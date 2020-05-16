@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'challegen'
 ]
 
 MIDDLEWARE = [
@@ -127,7 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Custom user model
-AUTH_USER_MODEL = 'users.UserModel'
+AUTH_USER_MODEL = 'users.User'
 
 #rest framework
 REST_FRAMEWORK = {

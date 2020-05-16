@@ -24,5 +24,6 @@ urlpatterns = [
     path('v1/login',obtain_jwt_token,name='login'),
     path('v1/register',RegisterUserView.as_view(),name='register'),
     path('v1/users',include('users.urls')),
+    path('v1/challegen',include('challegen.urls')),
 ]
 
