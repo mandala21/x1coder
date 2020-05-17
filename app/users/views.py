@@ -36,8 +36,7 @@ class LoginUserView(CreateAPIView):
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         #call to method login
-        service = UserService()
-        response = service.login(data)
+        response = User.objects.login(data)
         if(response):
             #successful login
             return Response(response,status=status.HTTP_200_OK)
