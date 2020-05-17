@@ -1,7 +1,6 @@
 from rest_framework.generics import ListCreateAPIView
 from .models import Challegen
 from .serializers import ChallegenListSerializer, ChallegenCreateSerializer
-from .services import ChallegenService
 from rest_framework.response import Response
 from rest_framework import status
 from utils.pagination  import StandardResultsSetPagination
