@@ -3,7 +3,6 @@ from rest_framework.generics import ListAPIView, CreateAPIView
 from .models import User
 from .serialisers import ListUserSerializer, RegisterUserSerializer, LoginUserSerializer
 from utils.pagination  import StandardResultsSetPagination
-from .service import UserService
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -22,8 +21,7 @@ class RegisterUserView(CreateAPIView):
     def post(self,request,*args,**kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        service = UserService()
-        response = service.register_user(request.data)
+        response = User.objects.register_user(request.data)
         return Response(response,status=status.HTTP_201_CREATED)
 
 class LoginUserView(CreateAPIView):
